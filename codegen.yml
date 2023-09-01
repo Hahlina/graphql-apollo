@@ -1,0 +1,13 @@
+overwrite: true
+schema: "./src/schemes"
+documents: "client/gql"
+generates:
+  client/hooks/generated-hooks.tsx:
+    config:
+      withHooks: true
+      withComponent: false
+      withHOC: false
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
