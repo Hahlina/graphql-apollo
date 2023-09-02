@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  backend:
+    restart: always
+    ports:
+      - 3000:3000
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/configs/:/etc/nginx/sites-enabled/:ro
+
