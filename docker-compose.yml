@@ -5,18 +5,16 @@ services:
     build: .
     restart: always
     container_name: backend
-    ports:
-      - 3000:3000
 
   nginx:
     build: ./nginx
     container_name: nginx
     restart: always
     ports:
-      - 80:80
+      - 3000:80
     depends_on:
       - backend
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/nginx.conf:/etc/nginx/conf.d
       - ./nginx/configs/:/etc/nginx/sites-enabled/:ro
 
