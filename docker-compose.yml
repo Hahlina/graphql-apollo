@@ -5,6 +5,7 @@ services:
     build: .
     restart: always
     container_name: backend
+    hostname: backend
     ports:
       - 3000:3000
 
@@ -14,7 +15,6 @@ services:
     restart: always
     ports:
       - 80:80
-      - 443:443
     depends_on:
       - backend
     volumes:
