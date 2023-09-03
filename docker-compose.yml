@@ -19,5 +19,5 @@ services:
       - app
 #    volumes:
 #      - ./nginx/conf.d:/etc/nginx/conf.d
-#      - ./nginx/configs/:/etc/nginx/sites-enabled/:ro
+      - ./nginx/configs/:/etc/nginx/sites-enabled/:ro
 
