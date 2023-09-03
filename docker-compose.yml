@@ -5,8 +5,7 @@ services:
     build: .
     restart: always
     container_name: app
-    ports:
-      - 3000:3000
+
 
   nginx:
     build: ./nginx
