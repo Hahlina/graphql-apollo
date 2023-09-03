@@ -4,6 +4,7 @@ services:
   app:
     build: .
     restart: always
+    container_name: app
     ports:
       - 3000:3000
 
