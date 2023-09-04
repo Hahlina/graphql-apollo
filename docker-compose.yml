@@ -4,14 +4,25 @@ services:
   api:
     build: ./server
     container_name: api
+    hostname: api
     ports:
       - 3000:3000
+    networks:
+      - example-net
 
   nginx:
     build: ./nginx
     container_name: nginx
+    hostname: nginx
     restart: always
     ports:
       - 80:80
+    depends_on:
+      - api
+    networks:
+      - example-net
     #  - 443:443
 
+networks:
+  example-net:
+    external: true
