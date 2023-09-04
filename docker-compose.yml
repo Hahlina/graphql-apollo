@@ -22,6 +22,8 @@ services:
       - api
     networks:
       - example-net
+    volumes:
+      - ./nginx/ssl:/etc/nginx/ssl
 
 networks:
   example-net:
