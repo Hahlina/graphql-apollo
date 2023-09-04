@@ -17,11 +17,11 @@ services:
     restart: always
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - api
     networks:
       - example-net
-    #  - 443:443
 
 networks:
   example-net:
