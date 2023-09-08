@@ -1,0 +1,51 @@
+name: Build and deploy 🚀
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
+      - name: upload files
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: --exclude=".git" --exclude=".github" --exclude=".env" --exclude="logs" -avzr --delete
+          path: ./
+          remote_path: /home/hahlina/lantern-graphql
+          remote_host: ${{ secrets.ssh_ip }}
+          remote_user: ${{ secrets.ssh_user }}
+          remote_key: ${{ secrets.key }}
+
+      - name: Stop Docker Compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.ssh_ip }}
+          username: ${{ secrets.ssh_user }}
+          key: ${{ secrets.key }}
+          script: |
+            cd /home/hahlina/lantern-graphql
+            docker-compose --file docker-compose.yml down
+
+      - name: build & start project
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.ssh_ip }}
+          username: ${{ secrets.ssh_user }}
+          key: ${{ secrets.key }}
+          script: "docker-compose -f /home/hahlina/lantern-graphql/docker-compose.yml build && docker-compose -f /home/hahlina/lantern-graphql/docker-compose.yml down && docker-compose -f /home/hahlina/lantern-graphql/docker-compose.yml up -d"
+
+      - name: Docker System Prune
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.ssh_ip }}
+          username: ${{ secrets.ssh_user }}
+          key: ${{ secrets.key }}
+          script: |
+            docker container prune --force
