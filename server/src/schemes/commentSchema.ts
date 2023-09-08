@@ -1,12 +1,12 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const commentSchema = gql`
-    extend type Query{
+    extend type Query {
         comments(eventId: ID!): [Comment]
         comment(id: ID): Comment
     }
 
-    type Comment{
+    type Comment {
         id: ID
         content: String
         author: Author
@@ -15,10 +15,10 @@ export const commentSchema = gql`
         updated_at: String
     }
 
-    type Author{
+    type Author {
         id: ID!
         name: String
         email: String!
         image: String
     }
-`
+`;

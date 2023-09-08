@@ -6,7 +6,8 @@
     "dev": "nodemon index.ts",
     "build": "tsc",
     "generate-hooks": "graphql-codegen --config codegen.yml",
-    "generate-types": "graphql-codegen --config codegen.ts"
+    "generate-types": "graphql-codegen --config codegen.ts",
+    "generate-type-api": "npx swagger-typescript-api -p https://api.lantern.com.ua/swagger/?format=openapi -o src/common/types"
   },
   "keywords": [],
   "author": "",

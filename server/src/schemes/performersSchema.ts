@@ -1,15 +1,12 @@
-import gql from "graphql-tag";
-
+import gql from 'graphql-tag';
 
 export const performersSchema = gql`
-
-    extend type Query{
-        performer(slug: String!) : Performer
+    extend type Query {
+        performer(slug: String!): Performer
         performers: [Performer]
     }
 
-
-    type Performer{
+    type Performer {
         id: ID!
         name: String!
         slug: String
@@ -24,7 +21,7 @@ export const performersSchema = gql`
         video: [PerformerVideo]
     }
 
-    type PerformerSocial{
+    type PerformerSocial {
         website: String
         telegram: String
         instagram: String
@@ -40,7 +37,7 @@ export const performersSchema = gql`
         performer: Int!
     }
 
-    type PerformerVideo{
+    type PerformerVideo {
         id: ID
         performer: Int!
         youtube_url: String
@@ -51,5 +48,4 @@ export const performersSchema = gql`
         standard_thumbnail: Thumbnail
         maxres_thumbnail: Thumbnail
     }
-
-`
+`;

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const participantsSchema = gql`
     extend type Query {
@@ -6,10 +6,10 @@ export const participantsSchema = gql`
         participants: [Participant!]!
     }
 
-    type Participant{
+    type Participant {
         id: ID!
         name: String!
         photo: String
         performer: Int!
     }
-`
+`;

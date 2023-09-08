@@ -1,18 +1,17 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const feedBackSchema = gql`
-
-    type Mutation{
-        postFeedback (input:FeedbackInput! ): FeedbackResponse!
+    type Mutation {
+        postFeedback(input: FeedbackInput!): FeedbackResponse!
     }
 
-    input FeedbackInput{
+    input FeedbackInput {
         name: String!
         email: String!
         message: String!
     }
 
-    type FeedbackResponse{
+    type FeedbackResponse {
         success: Boolean!
     }
-`
+`;

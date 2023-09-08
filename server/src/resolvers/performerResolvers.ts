@@ -1,12 +1,12 @@
-import {Resolvers} from "../types/types";
+import { Resolvers } from '../types/types';
 
 export const performerResolvers: Resolvers = {
     Query: {
-        performer: (_, {slug}, {dataSources}) => {
-            return dataSources.getPerformer(slug)
+        performer: (_, { slug }, { dataSources }) => {
+            return dataSources.getPerformer(slug);
         },
-        performers: (_, __, {dataSources}) => {
-            return dataSources.getPerformers()
+        performers: (_, __, { dataSources }) => {
+            return dataSources.getPerformers();
         }
     }
-}
+};

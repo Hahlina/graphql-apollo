@@ -1,13 +1,12 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const eventsSchema = gql`
-
-    type Query{
+    type Query {
         event(slug: String!): Event!
         events: [Event!]!
     }
 
-    type Event{
+    type Event {
         id: ID!
         name: String!
         description: String
@@ -35,7 +34,7 @@ export const eventsSchema = gql`
         event: Int
     }
 
-    type EventVideo{
+    type EventVideo {
         id: ID
         event: Int!
         youtube_url: String
@@ -47,10 +46,9 @@ export const eventsSchema = gql`
         maxres_thumbnail: Thumbnail
     }
 
-    type Thumbnail{
+    type Thumbnail {
         url: String
         width: Int
         height: Int
     }
-
-`
+`;

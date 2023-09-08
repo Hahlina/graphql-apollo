@@ -1,13 +1,12 @@
-import {Resolvers} from "../types/types";
+import { Resolvers } from '../types/types';
 
 export const commentResolver: Resolvers = {
     Query: {
-        comments: (_, {eventId}, {dataSources}) => {
-            return dataSources.getComments(eventId)
+        comments: (_, { eventId }, { dataSources }) => {
+            return dataSources.getComments(eventId);
         },
-        comment: (_, {id}, {dataSources}) => {
-            return dataSources.getComment(id)
-        },
-
-    },
-}
+        comment: (_, { id }, { dataSources }) => {
+            return dataSources.getComment(id);
+        }
+    }
+};
