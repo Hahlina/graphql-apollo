@@ -18,7 +18,7 @@ jobs:
         with:
           switches: --exclude=".git" --exclude=".github" --exclude=".env" --exclude="logs" -avzr --delete
           path: ./
-          remote_path: /lantern-graphql
+          remote_path: /home/azureuser/lantern-graphql
           remote_host: ${{ secrets.ssh_ip }}
           remote_user: ${{ secrets.ssh_user }}
           remote_key: ${{ secrets.key }}
@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.ssh_user }}
           key: ${{ secrets.key }}
           script: |
-            cd /home/hahlina/lantern-graphql
+            cd /home/azureuser/lantern-graphql
             docker-compose --file docker-compose.yml down
 
       - name: build & start project
@@ -39,7 +39,7 @@ jobs:
           host: ${{ secrets.ssh_ip }}
           username: ${{ secrets.ssh_user }}
           key: ${{ secrets.key }}
-          script: "docker-compose -f /home/hahlina/lantern-graphql/docker-compose.yml build && docker-compose -f /home/hahlina/lantern-graphql/docker-compose.yml down && docker-compose -f /home/hahlina/lantern-graphql/docker-compose.yml up -d"
+          script: "docker-compose -f /home/azureuser/lantern-graphql/docker-compose.yml build && docker-compose -f /home/azureuser/lantern-graphql/docker-compose.yml down && docker-compose -f /home/azureuser/lantern-graphql/docker-compose.yml up -d"
 
       - name: Docker System Prune
         uses: appleboy/ssh-action@master
