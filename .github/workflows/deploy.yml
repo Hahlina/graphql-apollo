@@ -15,11 +15,12 @@ jobs:
       - name: Build Docker image
         run: |
           cd server
-          docker build -t Dockerfile .
+          docker build -t my-server-image .
         working-directory: ${{ github.workspace }}
 
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -60,4 +61,4 @@ jobs:
           username: ${{ secrets.ssh_user }}
           key: ${{ secrets.key }}
           script: |
-           sudo docker container prune --force
+            sudo docker container prune --force
