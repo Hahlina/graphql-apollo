@@ -18,7 +18,7 @@ jobs:
         with:
           switches: --exclude=".git" --exclude=".github" --exclude=".env" --exclude="logs" -avzr --delete
           path: ./
-          remote_path: /home/hahlina/lantern-graphql
+          remote_path: /lantern-graphql
           remote_host: ${{ secrets.ssh_ip }}
           remote_user: ${{ secrets.ssh_user }}
           remote_key: ${{ secrets.key }}
