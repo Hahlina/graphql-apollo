@@ -1,8 +1,8 @@
 overwrite: true
 schema: "./src/schemes"
-documents: "client/gql"
+documents: "../client/gql"
 generates:
-  client/hooks/generated-hooks.tsx:
+  ../client/hooks/generated-hooks.tsx:
     config:
       withHooks: true
       withComponent: false

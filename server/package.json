@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "nodemon index.ts",
+    "build": "tsc",
     "generate-hooks": "graphql-codegen --config codegen.yml",
     "generate-types": "graphql-codegen --config codegen.ts"
   },
