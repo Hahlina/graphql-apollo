@@ -1,16 +1,16 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
-import { typeDefs } from './src/schemes';
-import { resolvers } from './src/resolvers';
-import { LanternApi } from './src/datasources/lanterApi';
-import { PORT } from './src/config';
+import { typeDefs } from './schemes';
+import { resolvers } from './resolvers';
+import { LanternApi } from './datasources';
+import { PORT } from './constants';
 
 const startApolloServer = async () => {
     const server = new ApolloServer({ typeDefs, resolvers });
     await startStandaloneServer(server, {
         context: async ({ req }) => {
-            const token = req.headers.authorization;
+            const token = req.headers.authorization || '';
             const { cache } = server;
             return {
                 dataSources: new LanternApi({ cache, token })

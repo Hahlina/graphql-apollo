@@ -13,8 +13,7 @@ import type {
     ResponseStatus
 } from '../types/types';
 import type { EventModel, CommentModel } from '../types/models';
-import { API_BASE_URL } from '../config';
-import { API_ROUTES } from '../constants';
+import { API_BASE_URL, API_ROUTES } from '../constants';
 
 export class LanternApi extends RESTDataSource {
     baseURL = API_BASE_URL;
