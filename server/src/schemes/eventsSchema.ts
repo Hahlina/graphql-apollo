@@ -2,8 +2,14 @@ import gql from 'graphql-tag';
 
 export const eventsSchema = gql`
     type Query {
-        event(slug: String!): Event!
-        events: [Event!]!
+        event(slug: String!): EventDetail!
+        events: EventsWithPagination!
+    }
+
+    type EventsWithPagination {
+        next: String
+        previous: String
+        results: [Event]
     }
 
     type Event {
@@ -12,38 +18,51 @@ export const eventsSchema = gql`
         description: String
         is_show_text: Boolean
         image: String
+        price: String
+        charity: Boolean
+        start_time: String
+        location: String
+        address: String
+        slug: String
+    }
+
+    type EventDetail {
+        id: ID!
+        name: String!
+        description: String
+        is_show_text: Boolean
+        image: String
         poster: String
         charity: Boolean
         start_time: String
+        price: String
         location: String
         address: String
         genre: String
         booking_count: String
         slug: String
-        performers: [Performer]
-        gallery: [EventGallery]
-        video: [EventVideo]
+        music_band: [MusicBand]
+        gallery: [Gallery]
+        video: [Video]
+        location_link: String
+        google_calendar: String
         eventComments: [Comment]
     }
 
-    type EventGallery {
+    type Gallery {
         id: ID
         image: String
         width: Int
         height: Int
-        event: Int
+        event: Int!
     }
 
-    type EventVideo {
+    type Video {
         id: ID
         event: Int!
         youtube_url: String
         title: String
-        default_thumbnail: Thumbnail
-        medium_thumbnail: Thumbnail
-        high_thumbnail: Thumbnail
-        standard_thumbnail: Thumbnail
-        maxres_thumbnail: Thumbnail
+        thumbnail: Thumbnail
     }
 
     type Thumbnail {

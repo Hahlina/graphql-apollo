@@ -4,19 +4,7 @@ query getEvent($slug: String!) {
         booking_count
         charity
         description
-        eventComments {
-            content
-            created_at
-            parent
-            author {
-                name
-                email
-            }
-            id
-        }
         location
         poster
-        start_time
-        genre
     }
 }

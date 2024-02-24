@@ -1,0 +1,54 @@
+query MusicBand($slug: String!) {
+    musicBand(slug: $slug) {
+        id
+        name
+        slug
+        logo
+        poster
+        description
+        bank_to_support
+        email_band
+        is_fan
+        member {
+            id
+            name
+            photo
+            musicband
+        }
+        song {
+            id
+            song_name
+            song_url
+            single
+            song_image
+            track_number
+            duration
+            is_published
+            musicband
+            album
+        }
+        gallery {
+            id
+            image
+            width
+            height
+            event
+        }
+        video {
+            id
+            event
+            youtube_url
+            title
+            thumbnail {
+                url
+                width
+                height
+            }
+        }
+        social_network_links {
+            id
+            social_network
+            url
+        }
+    }
+}
