@@ -12,7 +12,7 @@ import type {
     Booking,
     ResponseStatus
 } from '../types/types';
-import type { EventModel } from '../types/models';
+import type { EventModel, CommentModel } from '../types/models';
 import { API_BASE_URL } from '../config';
 import { API_ROUTES } from '../constants';
 
@@ -88,11 +88,11 @@ export class LanternApi extends RESTDataSource {
 
     //Comment
     getComments(eventId: string) {
-        return this.get<Comment[]>(`/${API_ROUTES.EVENTS_COMMENT}/?${API_ROUTES.EVENT}=${eventId}`);
+        return this.get<CommentModel[]>(`/${API_ROUTES.EVENTS_COMMENT}/?${API_ROUTES.EVENT}=${eventId}`);
     }
 
     getComment(id: string) {
-        return this.get<Comment>(`/${API_ROUTES.EVENTS_COMMENT}/${id}`);
+        return this.get<CommentModel>(`/${API_ROUTES.EVENTS_COMMENT}/${id}`);
     }
 
     //Feedback
